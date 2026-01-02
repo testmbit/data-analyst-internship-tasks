@@ -136,6 +136,6 @@ This task serves as the **data foundation** for later internship work, including
 
 ## Author
 
-**Athar Shaikh**
-Data Analyst Intern
-Elevate Labs
+**Athar Shaikh**  
+Data Analyst Intern  
+Elevate Labs  
