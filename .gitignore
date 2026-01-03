@@ -34,3 +34,16 @@ Thumbs.db
 *.egg-info/
 dist/
 build/
+
+# =========================
+# Power BI (local artifacts, if any)
+# =========================
+*.pbix
+*.pbit
+
+# =========================
+# Logs / temporary files
+# =========================
+*.log
+*.tmp
+*.bak
