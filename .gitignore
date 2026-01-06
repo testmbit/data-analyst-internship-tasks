@@ -8,6 +8,7 @@ __pycache__/
 # =========================
 # Virtual Environments
 # =========================
+.venv/
 venv/
 .env/
 .envrc/
@@ -36,12 +37,6 @@ dist/
 build/
 
 # =========================
-# Power BI (local artifacts, if any)
-# =========================
-*.pbix
-*.pbit
-
-# =========================
 # Logs / temporary files
 # =========================
 *.log
@@ -50,3 +45,14 @@ build/
 
 # SQLite temporary files
 *.db-journal
+
+# SQLite DB Browser project files
+*.sqbpro
+
+# =========================
+# Office / LibreOffice temp files (Linux + Windows)
+# =========================
+.~lock.*#
+~$*.pptx
+~$*.docx
+~$*.xlsx

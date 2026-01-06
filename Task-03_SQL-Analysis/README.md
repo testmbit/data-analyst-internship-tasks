@@ -9,9 +9,7 @@
   <a href="https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce">
     <img src="https://img.shields.io/badge/Dataset-Olist_E--Commerce-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white">
   </a>
-  <a href="https://github.com/atharmshaikh">
-    <img src="https://img.shields.io/badge/GitHub-Athar_Shaikh-181717?style=for-the-badge&logo=github">
-  </a>
+
 </p>
 
 ---
@@ -63,25 +61,26 @@ The dataset contains real transactional data from a Brazilian e-commerce platfor
 ```text
 Task-03_SQL-Analysis/
 ├── data/
-│   ├── olist.db
-│   ├── raw/
-│   │   └── README.md
+│   ├── analytics/
+│   │   └── olist_analytics.db
 │   ├── processed/
 │   │   └── README.md
+│   ├── raw/
+│   │   └── README.md
 │   └── README.md
-├── sql/
-│   ├── schema/
-│   │   └── schema.sql
-│   ├── queries/
-│   │   └── aggregations.sql
-│   └── analysis/
-│       └── insights.sql
 ├── reports/
 │   ├── screenshots/
-│   │   ├── revenue_by_state.png
 │   │   ├── avg_order_value.png
-│   │   └── monthly_revenue.png
+│   │   ├── monthly_revenue.png
+│   │   └── revenue_by_state.png
 │   └── README.md
+├── sql/
+│   ├── analysis/
+│   │   └── insights.sql
+│   ├── queries/
+│   │   └── aggregations.sql
+│   └── schema/
+│       └── schema.sql
 └── README.md
 ```
 
@@ -97,10 +96,13 @@ The following **industry-standard workflow** was followed:
 * Raw CSV files kept **outside GitHub**
 * Prevents large files, duplication, and licensing issues
 
-### 2. Database Creation
+### 2. Analytical Database Preparation
 
-* SQLite database created: `data/olist.db`
-* Used as the single analytical data store
+* A SQLite database file was created to ingest raw CSV data
+* Schema definitions and analytical SQL queries were executed
+* The database file was saved in its final form after all queries and validations were completed
+
+* Final database available at: `data/analytics/olist_analytics.db`
 
 ### 3. Schema Design
 
@@ -158,7 +160,7 @@ sql/analysis/insights.sql
 
 Identifies top revenue-contributing geographic regions.
 
-[View full image](reports/screenshots/revenue_by_state.png)
+
 
 ![Revenue by State](reports/screenshots/revenue_by_state.png)
 
@@ -168,7 +170,6 @@ Identifies top revenue-contributing geographic regions.
 
 Measures the average revenue generated per order.
 
-[View full image](reports/screenshots/avg_order_value.png)
 
 ![Average Order Value](reports/screenshots/avg_order_value.png)
 
@@ -178,14 +179,11 @@ Measures the average revenue generated per order.
 
 Shows revenue aggregated by month to analyze growth and seasonality.
 
-[View full image](reports/screenshots/monthly_revenue.png)
-
 ![Monthly Revenue Trend](reports/screenshots/monthly_revenue.png)
 
 ---
 
-## How to Run This Project
-
+## How to Explore This Analysis
 ### Prerequisites (All Platforms)
 
 * SQLite
@@ -195,55 +193,135 @@ Shows revenue aggregated by month to analyze growth and seasonality.
 
 ### Windows
 
-1. Download DB Browser for SQLite
+#### One-time: Analytical Database Creation (Manual)
+
+1. Download the dataset from Kaggle
+   Brazilian E-Commerce Public Dataset by Olist
+2. Extract the CSV files locally
+3. Download and install **DB Browser for SQLite**
    [https://sqlitebrowser.org/dl/](https://sqlitebrowser.org/dl/)
-2. Open the application
-3. Open the database file:
+4. Open **DB Browser for SQLite**
+5. Create a new database file
+6. Import the CSV files into SQLite as staging tables
+7. Execute schema and analytical SQL queries
+8. Save the final database as:
 
-   ```
-   data/olist.db
-   ```
-4. Run queries from:
+```
+data/analytics/olist_analytics.db
+```
 
-   ```
-   sql/analysis/insights.sql
-   ```
+Only the final analytical database is committed to this repository.
+
+#### Exploring the Analysis
+
+1. Open **DB Browser for SQLite**
+2. Open the database file:
+
+```
+data/analytics/olist_analytics.db
+```
+
+3. Run analytical queries from:
+
+```
+sql/analysis/insights.sql
+```
+
+4. Validate results using screenshots in:
+
+```
+reports/screenshots/
+```
 
 ---
 
 ### Linux (Ubuntu / Mint / Debian)
 
+#### Installation
+
 ```bash
+sudo apt update
 sudo apt install sqlitebrowser
 ```
 
-Then:
+#### One-time: Analytical Database Creation (Manual)
+
+1. Download and extract the Kaggle dataset locally
+2. Open **DB Browser for SQLite**
+3. Create a new SQLite database file
+4. Import CSV files into staging tables
+5. Execute schema and analysis SQL scripts
+6. Save the final database as:
+
+```
+data/analytics/olist_analytics.db
+```
+
+#### Exploring the Analysis
 
 1. Open **DB Browser for SQLite**
-2. Load `data/olist.db`
-3. Execute analysis queries
+2. Load the database file:
+
+```
+data/analytics/olist_analytics.db
+```
+
+3. Execute queries from:
+
+```
+sql/analysis/insights.sql
+```
+
+4. Cross-check outputs with screenshots in `reports/screenshots/`
 
 ---
 
 ### macOS
 
+#### Installation
+
 ```bash
 brew install --cask db-browser-for-sqlite
 ```
 
-Then:
+#### One-time: Analytical Database Creation (Manual)
 
-1. Open the database file
-2. Run SQL queries from `sql/analysis/insights.sql`
+1. Download and extract the Kaggle CSV files
+2. Open **DB Browser for SQLite**
+3. Create a new SQLite database
+4. Import CSV files into staging tables
+5. Run schema and analytical SQL queries
+6. Save the final database as:
+
+```
+data/analytics/olist_analytics.db
+```
+
+#### Exploring the Analysis
+
+1. Open **DB Browser for SQLite**
+2. Open the database file:
+
+```
+data/analytics/olist_analytics.db
+```
+
+3. Run queries from:
+
+```
+sql/analysis/insights.sql
+```
+
+4. Compare results with screenshots in `reports/screenshots/`
 
 ---
 
 ## Reproducibility
 
-* Raw data can be re-downloaded from Kaggle
-* Schema and SQL queries are fully version-controlled
-* Screenshots provide execution proof
-* Database can be rebuilt using documented steps
+* Raw data can be re-downloaded from the Kaggle source
+* Database schema and analytical SQL queries are fully version-controlled
+* Screenshots provide proof of query execution and results
+* The analytical database can be manually recreated using external raw data
 
 ---
 
@@ -251,16 +329,16 @@ Then:
 
 This project demonstrates:
 
-* Practical SQL for analytics
-* Real dataset handling
-* Debugging real data issues
-* Clean repository organization
+* Practical SQL for data analytics
+* Real-world dataset handling
+* Manual data ingestion and validation using SQLite
+* Clear separation of raw data, analytical outputs, and reports
 * Industry-aligned documentation
 
 ---
 
 ## Author
 
-**Athar Shaikh** 
-Data Analyst Intern 
-Elevate Labs 
+**Athar Shaikh**  
+Data Analyst Intern  
+Elevate Labs  
